@@ -13,7 +13,11 @@ app.post('/repos', parser, function (req, res) {
         // console.log('hi from index.js')
         // res.send('res.send from server index.js')
   // TODO - your code here!
-  github.getReposByUsername(req.body.term)
+  github.getReposByUsername(req.body.term, (data)=>{
+    var gitRepos = JSON.parse(data);
+    console.log(gitRepos)
+    res.send(gitRepos)
+  })
   // res.send('hi from post in server')
   // This route should take the github username provided
   // and get the repo information from the github API, then
