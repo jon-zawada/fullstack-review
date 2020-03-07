@@ -36,7 +36,7 @@ let getReposByUsername = (username, callback) => {
     if(err){
       console.log('uh oh from github.js',err)
     } else {
-      callback(data)
+      callback(null, data)
     }
   })
 }
