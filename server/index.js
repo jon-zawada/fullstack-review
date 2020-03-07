@@ -17,10 +17,13 @@ app.post('/repos', parser, function (req, res) {
   github.getReposByUsername(req.body.term, (err, data)=>{
     if(!err){
       console.log('we made it here in get repos')
-    var gitRepos = JSON.parse(data);
-    // console.log(gitRepos)
-    // res.send(gitRepos)
-    db.save(gitRepos[0]);
+      var gitRepos = JSON.parse(data);
+      // console.log(gitRepos)
+      // res.send('These were sent to db(unless not unique):', gitRepos)
+
+      for(let i = 0; i < gitRepos.length; i++){
+        db.save(gitRepos[i]);
+      }
     }
     // gitRepos.map(repo => {
     //   save(repo)
@@ -30,6 +33,7 @@ app.post('/repos', parser, function (req, res) {
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
+  res.status(200).send('done')
 });
 
 app.get('/repos', function (req, res) {
