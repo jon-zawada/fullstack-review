@@ -12,7 +12,9 @@ class App extends React.Component {
     }
 
   }
-
+  componentDidMount(){
+    this.getRepos();
+  }
   //successful post request to server index.js
   search (state) {
     // TODO
@@ -26,6 +28,22 @@ class App extends React.Component {
       },
       error: ()=> {
         console.log('uh oh')
+      }
+    })
+  }
+
+  getRepos(){
+    $.ajax({
+      method: 'GET',
+      url: '/repos',
+      success: (data)=>{
+        this.setState({
+          repos: data
+        });
+        console.log(this.state)
+      },
+      error: (err)=>{
+        console.log(err)
       }
     })
   }

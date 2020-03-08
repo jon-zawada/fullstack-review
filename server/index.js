@@ -25,9 +25,6 @@ app.post('/repos', parser, function (req, res) {
         db.save(gitRepos[i]);
       }
     }
-    // gitRepos.map(repo => {
-    //   save(repo)
-    // })
   })
   // res.send('hi from post in server')
   // This route should take the github username provided
@@ -39,6 +36,17 @@ app.post('/repos', parser, function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
+  // res.send('Connection is alive for Get')
+  // Repo.
+  // res.send(Repo.find().limit(5))
+  db.Repo.find((err, data)=>{
+    if(err){
+      console.log(err)
+    }else {
+      console.log(data)
+      res.send(data)
+    }
+  }).limit(25).sort({forks_count: -1})
 });
 
 let port = 1128;
