@@ -5,6 +5,8 @@ let repoSchema = mongoose.Schema({
   // TODO: your schema here!
   repoName: String, //repo name
   owner: String,
+  ownerUrl: String,
+  url: String,
   forks_count: Number,
   id: {
     type: Number,
@@ -21,6 +23,8 @@ let save = (repo) => {
   var newRepo = new Repo({
     repoName: repo.name,
     owner: repo.owner.login,
+    ownerUrl: repo.owner.html_url,
+    url: repo.html_url,
     forks_count: repo.forks_count,
     id: repo.id
   })

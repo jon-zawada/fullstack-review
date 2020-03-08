@@ -3,11 +3,15 @@ import React from 'react';
 var RepoListEntry = (props) =>(
   <div>
     <br/>
-    <div>
-    {`Repo Name: ${props.repo.repoName}`
-    }</div>
-    <div>
-      {`Owner: ${props.repo.owner}`}
+    <div> Repo Name: <span> </span>
+      <a href={props.repo.url}>
+    {props.repo.repoName}
+      </a>
+    </div>
+    <div> Owner: <span> </span>
+      <a href={props.repo.ownerUrl}>
+      {props.repo.owner}
+      </a>
     </div>
     <div>
      {`Fork Count: ${props.repo.forks_count}`}
