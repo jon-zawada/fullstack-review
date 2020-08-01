@@ -9,6 +9,7 @@ let getReposByUsername = (username, callback) => {
 
   console.log('USERNAME FROM github.js: ' + username)
 
+
   // The options object has been provided to help you out,
   // but you'll have to fill in the URL
   let options = {
@@ -19,23 +20,10 @@ let getReposByUsername = (username, callback) => {
     }
   };
 
-  // function callback(error, response, body) {
-  //   if(error) {
-  //     console.log(error);
-  //   }
-  //   if(!error && response.statusCode == 200) {
-  //     const info = JSON.parse(body);
-  //     console.log(info[0]);
-  //     // console.log(info[0].owner.login);
-  //     // console.log(info[0].forks_count);
-  //   }
-  // }
-
   // request(options, callback);
   request.get(options, (err, response, data)=>{
     if(err){
       callback(err);
-      //
     } else {
       callback(null, data);
     }

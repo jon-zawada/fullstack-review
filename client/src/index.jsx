@@ -25,6 +25,7 @@ class App extends React.Component {
       success: (res)=>{
         console.log(res)
         console.log(`${state.term} was searched`);
+        this.getRepos();
       },
       error: ()=> {
         console.log('uh oh')

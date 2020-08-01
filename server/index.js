@@ -30,7 +30,7 @@ app.post('/repos', parser, function (req, res) {
   // This route should take the github username provided
   // and get the repo information from the github API, then
   // save the repo information in the database
-  res.status(200).send('done')
+  res.status(201).send('done')
 });
 
 app.get('/repos', function (req, res) {
